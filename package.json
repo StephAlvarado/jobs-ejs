@@ -1,0 +1,12 @@
+{
+  "name": "jobs-ejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+   "start":"node app.js",
+   "dev": "nodemon app.js"
+  },
+  "author": "Stephanie Alvarado",
+  "license": "ISC",
+  "description": ""
+}
