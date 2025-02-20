@@ -103,12 +103,6 @@ if (app.get("env") === "production") {
 }
 app.use(csrf(csrf_development_mode));
 
-
-
-
-
-
-
 //Routes 
 const jobs = require("./routes/jobs"); // Import the jobs route
 const auth  = require("./middleware/auth"); // Import authentication middleware
