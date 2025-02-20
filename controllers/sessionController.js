@@ -1,14 +1,15 @@
 const User = require("../models/User");
 const parseVErr = require("../utils/parseValidationErrs");
+//const flash = require("connect-flash")
 
 const registerShow = (req, res) => {
-  res.render("register");
+  res.render("register", {error:req.flash("error")});
 };
 
 const registerDo = async (req, res, next) => {
   if (req.body.password != req.body.password1) {
     req.flash("error", "The passwords entered do not match.");
-    return res.render("register", {  errors: flash("errors") });
+    return res.redirect("/register");
   }
   try {
     await User.create(req.body);
@@ -20,7 +21,7 @@ const registerDo = async (req, res, next) => {
     } else {
       return next(e);
     }
-    return res.render("register", {  errors: flash("errors") });
+    return res.redirect("/register");
   }
   res.redirect("/");
 };
@@ -38,7 +39,7 @@ const logonShow = (req, res) => {
   if (req.user) {
     return res.redirect("/");
   }
-  res.render("logon");
+  res.render("logon", { errors: req.flash("error")});
 };
 
 module.exports = {
